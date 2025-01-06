@@ -6,7 +6,7 @@ from pymongo import MongoClient
 import requests
 from dotenv import load_dotenv
 
-
+#you must create a .env file to store your mongodb connection URI
 load_dotenv()
 
 #NASA API
