@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign-in</title>
+    <link rel="stylesheet" href="static/css/sgnup.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <main class="main">
+        {% extends 'base.html' %}
+        {% block content %}
+        {% include 'message.html' %}
+        <div class="main__container">
+            <div class="form__container">
+                <a href="/" class="form__greeting">
+                    <div class="form__heading">
+                        <img src="/static/astronaut.svg" alt="Site Logo" class="navbar__logo" />AstroInsightDaily
+                    </div>
+                </a>    
+                <div class="form__welcome">
+                    Welcome, please enter your details
+                </div>
+                <form class="signin" id="Form" method="POST">
+    
+                    <div class="signin__pair">
+                        <label for="fname" class="signin__label">First name</label>
+                        <input type="text" class="signin__input" placeholder="First name" name="fname" required>
+                    </div>
+                    
+                    <div class="signin__pair">
+                        <label for="lname" class="signin__label">Last name</label>
+                        <input type="text" class="signin__input" placeholder="Last name" name="lname" required>
+                    </div>
+
+                    <div class="signin__pair">
+                        <label for="Email" class="signin__label">Email ID</label>
+
+                        <!--The email pattern requires "characters@characters.domain" with [a-z]{2,} at the end signifying 2 or more 
+                        characters-->
+                        <input type="email" class="signin__input" placeholder="Enter your email" name="Email" required>
+                    </div>
+
+                    <div class="signin__pair">
+                        <label for="phno" class="signin__label">Phone number</label>
+                        <input type="tel" class="signin__input" placeholder="format: +917428839654" name="phno" 
+                        pattern="+[0-9]{2}-[0-9]{8,}$" required>
+                    </div>
+
+                    <div class="signin__pair">
+                        <label for="dob" class="signin__label">Date of birth</label>
+                        <input type="date" class="signin__input" name="dob" id="dtob" min='1900-01-01' required>
+                    </div>
+        
+                    <div class="signin__pair">
+                        <label for="uname" class="signin__label">Username</label>
+                        <input type="text" class="signin__input" placeholder="Enter your username" name="uname" required>
+                    </div>
+        
+                    <div class="signin__pair">
+                        <label for="pass" class="signin__label">Password</label>
+                        <input type="password" class="signin__input" id="pwd" placeholder="Enter password" name="pass" required>
+                    </div>
+
+                    <div class="signin__pair">
+                        <label for="pass_repeat" class="signin__label">Repeat Password</label>
+                        <input type="password" class="signin__input" id="rpwd" placeholder="Re-enter password" name="pass_repeat" required>
+
+                        <!--This is where the error message will be displayed-->
+                        <span id="msg"></span>
+                    </div>
+                    
+                    
+                    <!--Error message triggered upon incorrect password-->
+                    <button type="submit" id="signin__button" onclick="error()">Submit</button>
+        
+                </form>
+
+                <div class = "SUportal">
+                    <span class="SUportal__enter">Already have an account? <a href="/login">Log-in here</a></span>
+                </div>
+            </div>
+        
+            <div class="bg">
+                
+            </div>
+        </div>
+        {% endblock %}
+    </main>
+    
+</body>
+
+</html>

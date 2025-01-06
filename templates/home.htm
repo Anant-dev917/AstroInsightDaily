@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AstroInsightDaily</title>
+    <link rel="stylesheet" href="/static/css/styles.css" />
+
+    <!--Code for importing Lato font from Google fonts-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
+
+    <!--For sending data from javascript to the python file-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js">
+
+    </script>
+</head>
+
+<body>
+    <header class="navbar">
+        <div class="navbar__brand">
+            <img src="/static/astronaut.svg" alt="Site Logo" class="navbar__logo" />AstroInsightDaily
+        </div>
+        <ul class="navbar__navigation">
+            <li class="navbar__navigation-item"><a href="/pics" class="navbar__link">Picture of the day</a></li>
+            <li class="navbar__navigation-item"><a href="/login" class="navbar__link">Log-in</a></li>
+            {% if 'fname' in session %}
+            <li class="navbar__navigation-item"><div class="dropdown">
+            <button class="dropbtn">{{session['uname']}}</button>
+                <div class="dropdown-content">
+                  <a href="/prof">Profile</a>
+                  <a href="/logout">Logout</a>
+                </div>
+              </div>
+            </li>
+            {% endif %}
+        </ul>
+        
+    </header>
+    <main class="main">
+        <section>
+            <h1>Latest headlines</h1>
+            {% for content in articles %}
+            <article class="entry">
+                <section class="entry__core">
+                    <div class="entry__left">
+                        <div>
+                            <a href={{content[6]}} class="entry__nlink" id="nlink">
+                                <h2 class="entry__title" id="title">{{content[0]}}</h2>
+                            </a>
+                            
+                        </div>
+                        
+                        {% if 'fname' in session %}
+                        <button id="save" 
+                            data-title="{{ content[0] | e }}" 
+                            data-link="{{ content[6] | e }}" 
+                            data-source="{{ content[3] | e }}" 
+                            data-pubdate="{{ content[4] | e }}" 
+                            data-update="{{ content[5] | e }}" 
+                            data-summary="{{ content[1] | e }}" 
+                            data-image="{{ content[2] | e }}" 
+                            onclick="send(this)">Read later</button>
+                        
+                        {% endif %}
+
+                        <p class="entry__dateline" id="dates"><b>Published at:</b> {{content[3]}} | <b>Published on:</b> {{content[4]}} | <b>Updated on:</b> {{content[5]}}</p>
+                        <p class="entry__content" id="news">{{content[1]}}</p>
+                    </div>
+                    
+                    <div class="entry__media">
+                        <img class="entry__media__content" src={{content[2]}} id="image">
+                    </div>
+                </section>
+                
+            </article>
+            {% endfor %}
+        </section>
+    </main>
+    <footer class="footer">
+        <div class="footer__content">
+            <section class="left">
+                <a class="footer__item" href="www.linkedin.com/in/anant-shaynam-80b0b3250">Made by Anant</a>
+                <a class="footer__item">Check out my other projects</a>
+            </section>
+            <section class="right">
+                <div class="footer__column">
+                    <a class="footer__item">About</a>
+                    <a class="footer__item" id="footer_API" href="https://www.spaceflightnewsapi.net/">Powered by Speceflight News API</a>
+                </div>
+            </section>
+        </div>
+    </footer>
+
+    <script>
+    function send(button){
+
+    const title = button.getAttribute('data-title');
+    const link = button.getAttribute('data-link');
+    const source = button.getAttribute('data-source');
+    const pubdate = button.getAttribute('data-pubdate');
+    const update = button.getAttribute('data-update');
+    const summary = button.getAttribute('data-summary');
+    const image = button.getAttribute('data-image');
+
+    console.log("Data received:", { title, link, source, pubdate, update, summary, image });
+
+        $.ajax({
+            url: '/process',
+            type: 'POST',
+            contentType: 'application/json',
+            data: JSON.stringify({title, link, source, pubdate, update, summary, image}),
+
+            success: function(response) {
+            console.log('Data sent successfully:', response);
+        },
+        error: function(jqXHR, textStatus, errorThrown) {
+            console.error('Error sending data:', textStatus, errorThrown);
+        }
+        });
+
+    } 
+    </script>
+
+</body>
+
+</html>
+

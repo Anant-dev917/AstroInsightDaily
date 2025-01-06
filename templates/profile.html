@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile</title>
+    <link rel="stylesheet" href="/static/css/prof.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header id="welcome">
+        <div id="welcome__phrase">Welcome to your profile {{session['uname']}} </div>
+    </header>
+    <main id="core">
+        <section id="userProfile">
+            <div id="userProfile__data">
+                <table id="userProfile__table">
+                    <tr class="tableRow">
+                        {% for udat in record %}
+                        <th class="tableRow__category">Name</th>
+                        <td class="tableRow__data">{{udat[0]}} {{udat[1]}}</td>
+                    </tr>
+                    <tr class="tableRow">
+                        <th class="tableRow__category">Email</th>
+                        <td class="tableRow__data">{{udat[2]}}</td>
+                    </tr>
+                    <tr class="tableRow">
+                        <th class="tableRow__category">Phone number</th>
+                        <td class="tableRow__data">{{udat[3]}}</td>
+                    </tr>
+                    <tr class="tableRow">
+                        <th class="tableRow__category">Date of birth</th>
+                        <td class="tableRow__data">{{udat[4]}}</td>
+                    </tr>
+                    <tr class="tableRow">
+                        <th class="tableRow__category">Joined on</th>
+                        <td class="tableRow__data">{{udat[5]}}</td>
+                        {% endfor %}
+                    </tr>
+                </table>
+            </div>
+        </section>
+
+        <section id="LastAccessed">
+            
+            {% if lastac %}
+                {% for elem in lastac %}
+                <h1 id="heading">Continue reading</h1>
+                <article class="entry">
+                    <section class="entry__core">
+                        <div class="entry__left">
+                            <div id="entry__left__headline">
+                                <a href={{elem[1]}} class="entry__nlink" id="nlink">
+                                    <h2 class="entry__title" id="title">{{elem[2]}}</h2>
+                                </a>
+                            </div>
+
+                            <p class="entry__dateline" id="dates"><b>Published at:</b> {{elem[3]}} | <b>Published on:</b> {{elem[4]}} | <b>Updated on:</b> {{elem[5]}}</p>
+    
+                            <p class="entry__content" id="news">{{elem[6]}}</p>
+                        </div>
+                        
+                        <div class="entry__media">
+                            <img class="entry__media__content" src={{elem[7]}} id="image">
+                        </div>
+                    </section>
+                    
+                </article>
+                {% endfor %}
+            
+            {% else %}
+            <div id="NoActivity">
+                <h1 id="NoActivity__text">You haven't saved any news articles yet!</h1>
+            </div>
+
+            {% endif %}
+            
+        </section>
+
+    </main>
+
+    <footer id="exit">
+        <div id="exit__container">
+            <button id="exit__button" onclick="window.location.href = '/'; ">Back to homepage</button>
+        </div>
+    </footer>
+    
+</body>
+</html>

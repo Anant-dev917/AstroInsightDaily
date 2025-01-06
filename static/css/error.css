@@ -1,0 +1,42 @@
+.lato-thin {
+    font-family: "Lato", sans-serif;
+    font-weight: 100;
+    font-style: normal;
+  }
+
+html{
+    font-family: Lato, sans-serif;
+}
+
+*,
+*::after,
+*::before{
+    box-sizing: inherit;
+}
+
+
+#message_container{
+    display: flex;
+    flex-direction: column;
+    justify-self: center;
+    margin-top: 20%;
+    font-size: 50px;
+    letter-spacing: 2px;
+}
+
+#err_button{
+    border: none;
+    border-radius: 25px;
+    font-size: 30px;
+    color: aliceblue;
+    padding: 12px 20px;
+    max-width: fit-content;
+    background-color: rgb(223, 56, 56);
+    align-self: center;
+    margin-top: 10%;
+}
+
+#err_button:hover{
+    cursor: pointer;
+    background-color: rgb(146, 64, 64);
+}

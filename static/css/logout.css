@@ -1,0 +1,57 @@
+.lato-thin {
+    font-family: "Lato", sans-serif;
+    font-weight: 100;
+    font-style: normal;
+  }
+
+html{
+    font-family: Lato, sans-serif;
+}
+
+*,
+*::after,
+*::before{
+    box-sizing: inherit;
+}
+
+
+body{
+    box-sizing: border-box;
+    margin: 0;
+    background: url(/static/exit-bg.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.center{
+    max-width: fit-content;
+    display: flex;
+    flex-direction: column;
+    justify-self: center;
+    margin-top: 15%;
+}
+
+.center__message{
+    font-size: 50px;
+    letter-spacing: 4px;
+    color: #51a789;
+    font-weight: 800;
+}
+
+.center__button{
+    max-width: fit-content;
+    align-self: center;
+    border: none;
+    font-size: 30px;
+    padding: 20px 20px;
+    border-radius: 25px;
+    background-color: #51a789;
+    color: #ffffff;
+    font-weight: 600;
+}
+
+.center__button:hover{
+    cursor: pointer;
+    box-shadow: 1px 1px 5px 8px #38433f;
+}
+

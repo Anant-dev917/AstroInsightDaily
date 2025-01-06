@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Picture of the day</title>
+    <link rel="stylesheet" href="/static/css/pic.css" />
+
+    <!--Code for importing Lato font from Google fonts-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="navbar">
+        <div class="navbar__back">
+            <a href="/" class="navbar__link"><h4>Go back</h4></a>
+        </div>
+        <div class="navbar__brand">
+            <h2>{{heading}}</h2>
+        </div>
+        <div id="navbar__date">
+            <h4>{{date}}</h4>
+        </div>
+    </header>
+
+    <main class="main">
+    <section class="main__media">
+    
+    {% if media == 'video' %}
+
+    <!--iframe allows us to integrate videos from external sources like Youtube into our website-->
+    <iframe id="media__vid" width="600" height="400" src={{url}} frameborder="0" allowfullscreen>
+    </iframe>
+
+    {% else %}
+    <a href={{hdlink}}>
+        <img id="media__image" src={{url}} >
+    </a>
+
+    {% endif %}
+    </section>
+    <section class="exp">
+        <article class="content">
+            <p class="content__text">{{desc}}</p>
+        </article>
+    </section>
+    </main>
+    <footer class="footer">
+        <div class="footer__content">
+            <section class="left">
+                <a class="footer__item" href="https://www.linkedin.com/in/anant-shaynam-80b0b3250/">Made by Anant</a>
+                <a class="footer__item">Check out my other projects</a>
+            </section>
+            <section class="right">
+                <div class="footer__column">
+                    <a class="footer__item">About</a>
+                    <a class="footer__item" href="https://api.nasa.gov/">Powered by NASA API</a>
+                </div>
+            </section>
+        </div>
+    </footer>
+</body>
+</html>

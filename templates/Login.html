@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="static/css/Login.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <main class="main">
+            {% extends 'base.html' %}
+            {% block content %}
+            {% include 'message.html' %}
+        <div class="main__container">
+            
+            <div class="form__container">
+                <a href="/" class="form__greeting">
+                    <div class="form__heading">
+                        <img src="/static/astronaut.svg" alt="Site Logo" class="navbar__logo" />AstroInsightDaily
+                    </div>
+                </a>    
+                <div class="form__welcome">
+                   Sign-in to AstroInsightDaily
+                </div>
+                <form class="login" id="Form" method="POST">
+                    <div class="login__pair">
+                        <label for="uname" class="login__label">Username</label>
+                        <input type="text" class="login__input" placeholder="Enter your username" name="uname" required>
+                        <span id="umsg"></span>
+                    </div>
+        
+                    <div class="login__pair">
+                        <label for="pass" class="login__label">Password</label>
+                        <input type="password" class="login__input" placeholder="Enter password" name="pass" required>
+                        <span id="pmsg"></span>
+                    </div>
+
+                    <button type="submit" id="login__button" onclick="error()">Login</button>
+                </form>
+
+                <div class = "SUportal">
+                    <span class="SUportal__enter">Don't have an account? <a href="/signin">Sign-up here</a></span>
+                </div>
+
+            </div>
+            
+        
+            <div class="bg">
+                <img class="bg__pic" src="/static/Logbg.jpg">
+            </div>
+            
+        </div>
+        {% endblock %}
+    </main>
+
+</body>
+
+</html>
