@@ -11,5 +11,6 @@ Certain parts of the project utilise flash messages for displaying user error. T
 Additionally, the 'home.htm' homepage file for the web application utilises javascript's 'jQuery' library to pass on the clicked news article info from the webpage to the flask endpoint.   
 
 
-===========================================================================================================================================================================
+
+
 This project started out as part of a flask learning course I was taking, but I was unsatisfied with the project I had done there. So what started out as a basic microblog web application turned into this in little over a month's time. The project itself is not exactly a novelty, but the code is mine and so is the web layout. This project helped me feel more comfortable with flask and HTML/CSS and was created for both as a learning project and for employment purposes. Feel free to use it as part of your academic project, for learning, or even improving upon it to create your own application.
