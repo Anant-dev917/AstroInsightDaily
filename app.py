@@ -10,7 +10,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 #NASA API
-API_KEY='Get your API Key from the NASA open APIs website'
+API_KEY= os.getenv("NASA_APPKEY")                                  #Get your API Key from the NASA open APIs website
 response = requests.get(f'https://api.nasa.gov/planetary/apod?api_key={API_KEY}')
 
 #Spaceflight API
