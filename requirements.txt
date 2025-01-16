@@ -2,4 +2,5 @@ flask
 python-dotenv
 pymongo[srv]
 gunicorn
-dateutil
+python-dateutil
+requests
